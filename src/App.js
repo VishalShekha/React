@@ -3,7 +3,9 @@
 // import StatesChanges from "./components/StatesChanges";
 // import MethodsAsProps from "./components/MethodsAsProps";
 // import ConditionalRender from "./components/ConditionalRender";
-import ListRender from "./components/ListRender";
+// import ListRender from "./components/ListRender";
+import FormHandling from "./components/FormHandling";
+
 
 // let logged = (child) => {
 //   console.log(`Hi ${child}`)
@@ -25,7 +27,9 @@ function App() {
     
         {/* <ConditionalRender isTrue = {0}></ConditionalRender> */}
         
-        <ListRender></ListRender>
+        {/* <ListRender></ListRender> */}
+
+        <FormHandling></FormHandling>
 
     </div>
   );
