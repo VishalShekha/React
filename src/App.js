@@ -4,8 +4,10 @@
 // import MethodsAsProps from "./components/MethodsAsProps";
 // import ConditionalRender from "./components/ConditionalRender";
 // import ListRender from "./components/ListRender";
-import FormHandling from "./components/FormHandling";
-
+// import FormHandling from "./components/FormHandling";
+import Memos from "./components/Memos";
+import { useState } from "react";
+import Portals from "./components/Portals";
 
 // let logged = (child) => {
 //   console.log(`Hi ${child}`)
@@ -13,8 +15,10 @@ import FormHandling from "./components/FormHandling";
 
 
 function App() {
+  let [name, setName] = useState('Vishal');
+
   return (
-    <div className="App">
+    <div className="App" onClick={() => setName('Vidya')}>
       {/* <Greet /> */}
 
       {/* <PropsPassing name="Vishal"> 
@@ -29,7 +33,10 @@ function App() {
         
         {/* <ListRender></ListRender> */}
 
-        <FormHandling></FormHandling>
+        {/* <FormHandling></FormHandling> */}
+
+        <Memos name = {name}></Memos>
+        <Portals></Portals>
 
     </div>
   );
