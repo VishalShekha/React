@@ -1,24 +1,10 @@
-import React from 'react'
+import React from "react";
 
 function ConditionalRender(props) {
-  return (
-    props.isTrue?(
-
-        <div>
-        hi
-        </div>
-    )
-    : 
-        <div>
-        Hello
-        </div>
-    
-    
-)
+  return props.isTrue ? <div>hi</div> : <div>Hello</div>;
 }
 
-export default ConditionalRender
-
+export default ConditionalRender;
 
 // Shallow comparation '==='
 // Returns true if only the object is same and not the value

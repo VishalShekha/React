@@ -1,12 +1,8 @@
-import React from 'react'
+import React from "react";
 
-function Memos({name}) {
-  console.log('Rendering')
-  return (
-    <div>
-      {name}
-    </div>
-  )
+function Memos({ name }) {
+  console.log("Rendering");
+  return <div>{name}</div>;
 }
 
-export default Memos
+export default Memos;

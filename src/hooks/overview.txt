@@ -1,0 +1,6 @@
+Hooks are used to help do everything without classes
+Hooks cant be used in classes
+
+
+Only call hooks at top level not in loops and conditions and nested functions
+only call hooks in a ract functions
