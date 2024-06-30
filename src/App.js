@@ -8,7 +8,8 @@
 // import Memos from "./components/Memos";
 // import { useState } from "react";
 // import Portals from "./components/Portals";
-import StateFour from "./hooks/StateFour";
+// import StateFour from "./hooks/StateFour";
+import EffectThree from "./hooks/EffectThree";
 
 // let logged = (child) => {
 //   console.log(`Hi ${child}`)
@@ -41,7 +42,9 @@ function App() {
       {/* <Memos name = {name}></Memos>
         <Portals></Portals> */}
 
-      <StateFour></StateFour>
+      {/* <StateFour></StateFour> */}
+
+      <EffectThree />
     </div>
   );
 }
