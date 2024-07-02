@@ -1,3 +1,4 @@
+import React from "react";
 // import Greet from "./components/ComponentFunc";
 // import PropsPassing from "./components/PropsPassing";
 // import StatesChanges from "./components/StatesChanges";
@@ -9,11 +10,16 @@
 // import { useState } from "react";
 // import Portals from "./components/Portals";
 // import StateFour from "./hooks/StateFour";
-import EffectThree from "./hooks/EffectThree";
+// import EffectFive from "./hooks/EffectData";
+// import EffectData from "./hooks/EffectData";
+// import BoxComp from "./materialUi/BoxComp";
+import ContextOne from "./hooks/ContextOne";
 
 // let logged = (child) => {
 //   console.log(`Hi ${child}`)
 // }
+
+export const UserContext = React.createContext();
 
 function App() {
   // let [name, setName]  = useState('Vishal');
@@ -44,7 +50,13 @@ function App() {
 
       {/* <StateFour></StateFour> */}
 
-      <EffectThree />
+      {/* <EffectFive /> */}
+
+      {/* <BoxComp></BoxComp> */}
+
+      <UserContext.Provider value={"Vishal"}>
+        <ContextOne></ContextOne>
+      </UserContext.Provider>
     </div>
   );
 }
