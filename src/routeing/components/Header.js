@@ -6,12 +6,13 @@ import Button from "@mui/material/Button";
 import ThemeToggle from "./ThemeToggle"; //Dark Theme
 // import { Link } from "react-router-dom"; // This is used to for normal link
 import { NavLink, useLocation } from "react-router-dom"; //This is used for finding the active link
+import { useAuth } from "../util/auth";
 
 function Header() {
   const location = useLocation();
 
   // const isProductRoute = /^\/products(\/.*)?$/i.test(location.pathname); // for all sub routes for products
-
+  const auth = useAuth();
   return (
     <AppBar position="static">
       <Toolbar>
@@ -48,6 +49,29 @@ function Header() {
         >
           Products
         </Button>
+        {!auth.user ? (
+          <Button
+            color="inherit"
+            component={NavLink}
+            to="/login"
+            sx={{
+              fontWeight: location.pathname === "/login" ? "bold" : "normal",
+            }}
+          >
+            Login
+          </Button>
+        ) : (
+          <Button
+            color="inherit"
+            component={NavLink}
+            to="/profile"
+            sx={{
+              fontWeight: location.pathname === "/profile" ? "bold" : "normal",
+            }}
+          >
+            Profile
+          </Button>
+        )}
         <ThemeToggle /> {/* Dark Theme */}
       </Toolbar>
     </AppBar>

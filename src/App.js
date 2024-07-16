@@ -13,6 +13,10 @@ import FeaturedProducts from "./routeing/pages/FeaturedProducts";
 import User from "./routeing/components/User";
 import UserDetails from "./routeing/components/UserDetails";
 import CircularProgress from "@mui/material/CircularProgress";
+import Profile from "./routeing/pages/Profile";
+import { AuthProvider } from "./routeing/util/auth";
+import Login from "./routeing/pages/Login";
+import RequireAuth from "./routeing/util/RequireAuth";
 
 // import AboutUs from "./routeing/pages/AboutUs";
 const LazyAbout = React.lazy(() => import("./routeing/pages/AboutUs"));
@@ -39,42 +43,53 @@ function App() {
   //Dark Theme
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Router>
-          <Header />
-          <div className="content">
-            {/* Keeps footer below */}
-            <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route
-                path="/about-us"
-                element={
-                  // this is where you add the loading sign and page
-                  <React.Suspense fallback={<CircularProgress />}>
-                    <LazyAbout />
-                  </React.Suspense>
-                }
-              ></Route>
-              <Route path="/products" element={<Products />}>
-                <Route index element={<NewProducts />} />
-                {/* This is to give a default sub component when you go to prducts page */}
-                <Route path="new" element={<NewProducts />}></Route>
-                <Route path="featured" element={<FeaturedProducts />}></Route>
-              </Route>
-              <Route path="user" element={<User />}>
-                <Route path=":userId" element={<UserDetails />} />
-                {/* ':userId' is a param , which mean dynamic link it can be anything a string or a number */}
-              </Route>
-              <Route path="*" element={<NotFound />} />
-              {/* '*' means when no other route is matched */}
-            </Routes>
-          </div>
-          <Footer />
-        </Router>
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+    <AuthProvider>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Router>
+            <Header />
+            <div className="content">
+              {/* Keeps footer below */}
+              <Routes>
+                <Route path="/" element={<Home />}></Route>
+                <Route
+                  path="/about-us"
+                  element={
+                    // this is where you add the loading sign and page
+                    <React.Suspense fallback={<CircularProgress />}>
+                      <LazyAbout />
+                    </React.Suspense>
+                  }
+                ></Route>
+                <Route path="/products" element={<Products />}>
+                  <Route index element={<NewProducts />} />
+                  {/* This is to give a default sub component when you go to prducts page */}
+                  <Route path="new" element={<NewProducts />}></Route>
+                  <Route path="featured" element={<FeaturedProducts />}></Route>
+                </Route>
+                <Route path="user" element={<User />}>
+                  <Route path=":userId" element={<UserDetails />} />
+                  {/* ':userId' is a param , which mean dynamic link it can be anything a string or a number */}
+                </Route>
+                <Route
+                  path="profile"
+                  element={
+                    <RequireAuth>
+                      <Profile />
+                    </RequireAuth>
+                  }
+                ></Route>
+                <Route path="login" element={<Login />} />
+                <Route path="*" element={<NotFound />} />
+                {/* '*' means when no other route is matched */}
+              </Routes>
+            </div>
+            <Footer />
+          </Router>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </AuthProvider>
   );
 }
 
